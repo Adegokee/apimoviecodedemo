@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
+import ReviewMovie from './ReviewContext'
+import ReviewList from './component/ReviewList'
+import Form from './component/Form'
+import './App.css'
 
-function App() {
+const App = () => {
+  const[theme, setTheme] = useState('dark');
+  const toogleTheme = ( ) => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={theme}>
+    <ReviewMovie >
+      <button onClick={toogleTheme}>{theme === 'dark' ? 'light' : 'dark'}</button>
+      <Form />
+      <ReviewList />
+
+      
+    </ReviewMovie>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
